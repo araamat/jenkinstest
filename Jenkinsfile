@@ -2,10 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Run') {
+        stage('Install') {
             steps {
-                sh 'bash hello.sh'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'pytest'
             }
         }
     }
-}
